@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Modifier l'utilisateur - SangVital</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <!-- Custom CSS -->
+    <style>
+        .background-image {
+            background: url('/images/blood-donation-bg.jpg') center center/cover no-repeat;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+        .register-box {
+            position: relative;
+            z-index: 2;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #333;
+            padding: 2rem;
+            width: 320px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .register-box .logo {
+            width: 60px;
+            margin-bottom: 1rem;
+        }
+        .register-box h2 {
+            margin-bottom: 1.5rem;
+            color: #1E3A5F;
+        }
+        .register-box form input,
+        .register-box form select {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .register-box form button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #1E3A5F;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .register-box form button:hover {
+            background-color: #16324f;
+        }
+        .register-box a {
+            color: #1E3A5F;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="background-image">
+        <div class="overlay"></div>
+        <div class="register-box animate__animated animate__fadeInDown">
+            <img src="/images/logo.png" alt="Logo de SangVital" class="logo">
+            <h2>Modifier l'utilisateur</h2>
+
+            <!-- On suppose qu'on va poster sur /admin/edit_user/<%= user.id %> -->
+            <form action="/admin/edit_user/<%= user.id %>" method="post">
+                <!-- Champ Username -->
+                <input 
+                  type="text" 
+                  name="username" 
+                  placeholder="Nom d'utilisateur" 
+                  value="<%= user.username %>" 
+                  required
+                >
+                <!-- Champ Email -->
+                <input 
+                  type="email" 
+                  name="email" 
+                  placeholder="Adresse email" 
+                  value="<%= user.email %>" 
+                  required
+                >
+                <!-- Mot de passe : si tu laisses vide, tu peux gérer la logique 
+                     dans la route pour ne pas changer le password -->
+                <input 
+                  type="password" 
+                  name="password" 
+                  placeholder="Nouveau mot de passe (laisser vide si inchangé)"
+                >
+                <input 
+                  type="password" 
+                  name="confirm_password" 
+                  placeholder="Confirmer le mot de passe"
+                >
+                <!-- Nom -->
+                <input 
+                  type="text" 
+                  name="nom" 
+                  placeholder="Nom" 
+                  value="<%= user.nom %>" 
+                  required
+                >
+                <!-- Prénom -->
+                <input 
+                  type="text" 
+                  name="prenom" 
+                  placeholder="Prénom" 
+                  value="<%= user.prenom %>" 
+                  required
+                >
+                <!-- Sélection du rôle -->
+                <select title="Sélectionnez un rôle" name="role" required>
+                    <option value="">Sélectionnez un rôle</option>
+                    <option value="DONNEUR" <%= user.role === 'DONNEUR' ? 'selected' : '' %>>Donneur de sang</option>
+                    <option value="ADMIN" <%= user.role === 'ADMIN' ? 'selected' : '' %>>Administrateur</option>
+                    <option value="MEDECIN" <%= user.role === 'MEDECIN' ? 'selected' : '' %>>Médecin</option>
+                    <option value="INFIRMIER" <%= user.role === 'INFIRMIER' ? 'selected' : '' %>>Infirmier</option>
+                    <option value="TECHNICIEN" <%= user.role === 'TECHNICIEN' ? 'selected' : '' %>>Technicien</option>
+                    <option value="ASSISTANT" <%= user.role === 'ASSISTANT' ? 'selected' : '' %>>Assistant</option>
+                    <option value="RESPONSABLE" <%= user.role === 'RESPONSABLE' ? 'selected' : '' %>>Responsable</option>
+                </select>
+                <!-- Bouton de soumission -->
+                <button type="submit" class="animate__animated animate__pulse">Enregistrer</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

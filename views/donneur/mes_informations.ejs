@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mes Informations - SangVital</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <!-- Custom CSS -->
+  <style>
+    body {
+      background-color: #f5f5f5;
+    }
+    .navbar-brand {
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+    .content-container {
+      margin-top: 80px;
+      padding: 2rem;
+    }
+    footer {
+      background-color: #1E3A5F;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+    .nav-link.active {
+      background-color: #1E3A5F;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Barre de navigation en haut -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
+    <div class="container">
+      <a class="navbar-brand" href="#">SangVital</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#donneurNavbar" aria-controls="donneurNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="donneurNavbar">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/donneur/">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link" href="/donneur/dons/">Mes Dons</a></li>
+          <li class="nav-item"><a class="nav-link active" href="/donneur/informations">Mes Informations</a></li>
+          <li class="nav-item">
+            <a class="nav-link btn btn-outline-light ms-2" href="/">Déconnexion</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenu principal -->
+  <div class="content-container animate__animated animate__fadeInUp">
+    <h2>Mes Informations Personnelles</h2>
+    <p>Vous pouvez consulter ou mettre à jour vos informations ici.</p>
+  
+    <form action="#" method="post" class="mt-4">
+      <div class="mb-3 row">
+        <label for="nom" class="col-sm-2 col-form-label">Nom</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="nom" name="nom" value="<%= info.userNom %>" required>
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="prenom" class="col-sm-2 col-form-label">Prénom</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="prenom" name="prenom" value="<%= info.userPrenom %>" required>
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="username" class="col-sm-2 col-form-label">Nom d'utilisateur</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="username" name="username" value="<%= info.username %>" required>
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="email" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control" id="email" name="email" value="<%= info.email %>" required>
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="telephone" class="col-sm-2 col-form-label">Téléphone</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="telephone" name="telephone" value="<%= info.telephone || '' %>">
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="adresse" class="col-sm-2 col-form-label">Adresse</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="adresse" name="adresse" value="<%= info.adresse || '' %>">
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="groupe" class="col-sm-2 col-form-label">Groupe Sanguin</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="groupe" name="groupe"
+                 value="<%= info.type_groupe ? (info.type_groupe + info.rhesus) : '' %>">
+        </div>
+      </div>
+      <div class="text-end">
+        <button type="submit" class="btn btn-primary">Mettre à jour</button>
+      </div>
+    </form>
+  </div>
+  
+
+  <footer>
+    <p>&copy; 2025 SangVital. Tous droits réservés.</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
