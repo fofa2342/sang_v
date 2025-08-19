@@ -43,7 +43,7 @@ Sang_v is a web application designed to facilitate blood donation management. It
    - Import the `database.sql` file into your SQL database to create the necessary tables.
 
 4. Configure database:
-   - Modify the bd.js file in the lib directory with your database informations
+   - Modify the `bd.js` file in the `lib` directory with your database informations
 
 5. Start the application:
    ```bash
